@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/reminder/index', ['as'=> 'reminder', 'uses'=> 'ReminderController@index']);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +29,10 @@ Route::get('/reminder/index', ['as'=> 'reminder', 'uses'=> 'ReminderController@i
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/reminder/index', ['as'=> 'reminder', 'uses'=> 'ReminderController@index']);
+	Route::get('/reminder/add', ['as'=> 'reminder-add', 'uses'=> 'ReminderController@add']);
+	Route::post('/reminder/insert', ['as'=> 'reminder-insert', 'uses'=> 'ReminderController@insert']);
+	Route::get('/reminder/edit/{id}', ['as'=> 'reminder-edit', 'uses'=> 'ReminderController@edit']);
+	Route::post('/reminder/update', ['as'=> 'reminder-update', 'uses'=> 'ReminderController@update']);
+	Route::get('/reminder/delete/{id}', ['as'=> 'reminder-delete', 'uses'=> 'ReminderController@delete']);
 });

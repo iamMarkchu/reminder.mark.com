@@ -17,8 +17,7 @@ class CreateRemindersTable extends Migration
             $table->string('content', '120');
             $table->dateTime('enddate');
             $table->enum('status', ['serving', 'expired', 'deleted']);
-            $table->enum('isloop', ['yes', 'no']);
-            $table->smallInteger('loopLevel');
+            $table->smallInteger('looplevel');
             $table->string('personsend', '20');
             $table->string('personemail', '100');
             $table->timestamps();
