@@ -15,16 +15,17 @@ class ReminderController extends Controller
         $extraReminderList = [];
     	foreach ($reminders as $reminderItem) {
             //有looplevel的提醒算出近三个月中的循环
-            if($reminderItem->loopLevel == '每天'){
+            
+            if($reminderItem->looplevel == '每天'){
                 //每天暂不循环
-            }elseif($reminderItem->loopLevel == '每周'){
+            }elseif($reminderItem->looplevel == '每周'){
                 //每周
                 $tmpReminder = clone $reminderItem;
                 $tmpReminder->enddate = date('Y-m-d H:i:s', strtotime($tmpReminder->enddate. ' + 7days'));
-            }elseif($reminderItem->loopLevel == '每月'){
+            }elseif($reminderItem->looplevel == '每月'){
                 $tmpReminder = clone $reminderItem;
                 $tmpReminder->enddate = date('Y-m-d H:i:s', strtotime($tmpReminder->enddate.' + 1month'));
-            }
+            }   
             if(isset($tmpReminder)){
                 $extraReminderList[] = $tmpReminder;
             }

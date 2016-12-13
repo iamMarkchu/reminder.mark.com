@@ -54,7 +54,7 @@
 								            				{{$reminder->status}}
 								            			</a>
 								            		  @endif
-								            	重复：{{$reminder->loopLevel}}
+								            	重复：{{$reminder->looplevel}}
 								            	<i class="fa fa-clock-o"></i> {{date('H:i:s', strtotime($reminder->enddate))}}
 								            </span>
 								            <h3 class="timeline-header"><a href="#">{{$reminder->personsend}}&nbsp&nbsp</a>的提醒</h3>

@@ -15,7 +15,6 @@ class Reminder extends Model
     			'3' => '每月',
     			'4' => '每年',
     	];
-
         return $loopMapping[$value];
     }
 }

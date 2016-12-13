@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Mail;
+use App\Reminder;
+use DB;
 
 class SendReminders extends Command
 {
@@ -12,7 +14,7 @@ class SendReminders extends Command
      *
      * @var string
      */
-    protected $signature = 'reminders:send';
+    protected $signature = 'reminders:list';
 
     /**
      * The console command description.
@@ -38,10 +40,13 @@ class SendReminders extends Command
      */
     public function handle()
     {
-        //dump(config('mail'));die;
-        Mail::raw('这是一封测试邮件', function ($message) {
-            $to = 'markchu@megainformationtech.com.com';
-            $message ->to($to)->subject('测试邮件');
-        });
+        $reminderlist = Reminder::where('status', 'serving')->get();
+        $starttime = date('Y-m-d H:s');
+        foreach ($reminderlist as $reminder) {
+            $tmp = date('Y-m-d H:i', strtotime($reminder->enddate));
+            if($starttime == $tmp){
+                
+            }
+        }
     }
 }
